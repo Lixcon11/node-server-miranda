@@ -1,11 +1,10 @@
 import "dotenv/config";
-import express, { NextFunction, Request, Response } from "express"
-const roomsController = require("./controllers/roomsController")
+import express from "express"
+//const roomsController = require("./controllers/roomsController")
 
 const app = express()
-const port = 3000
 
-app.use("/rooms", roomsController)
+//app.use("/rooms", roomsController)
 
 //app.use("/bookings", bookingsController)
 
