@@ -1,10 +1,10 @@
 import "dotenv/config";
 import express from "express"
-//const roomsController = require("./controllers/roomsController")
+import roomsController from "./controllers/roomsController";
 
 const app = express()
 
-//app.use("/rooms", roomsController)
+app.use("/rooms", roomsController)
 
 //app.use("/bookings", bookingsController)
 
