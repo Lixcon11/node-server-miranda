@@ -3,12 +3,15 @@ import express, {Request, Response, NextFunction} from "express"
 import roomsController from "./controllers/roomsController";
 import loginController from "./controllers/loginController";
 import { authenticateToken } from "./middleware/auth";
+import publicController from "./controllers/publicController";
 
 const app = express()
 
 app.use(express.json())
 
 app.use("/login", loginController);
+
+app.use("/info", publicController)
 
 app.use(authenticateToken);
 
