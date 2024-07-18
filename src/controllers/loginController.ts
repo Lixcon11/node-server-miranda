@@ -7,7 +7,7 @@ const users = [
     { id: 1, email: "hi@mark.com", password: "youaretearingapartlisa" }
 ];
 
-router.post('/login', (req: Request, res: Response) => {
+router.post('/', (req: Request, res: Response) => {
     const { email, password } = req.body;
     const user = users.find(user => user.email === email);
 
@@ -19,7 +19,7 @@ router.post('/login', (req: Request, res: Response) => {
         return res.status(400).json({ error: "Invalid password" });
     }
 
-    const token = jwt.sign({ userId: user.id, email: user.email }, process.env.TOKEN_SECRET as string, { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user.id, email: user.email }, process.env.TOKEN_SECRET as string);
     return res.json({ token });
 });
 
