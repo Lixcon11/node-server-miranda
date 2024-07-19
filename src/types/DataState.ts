@@ -1,4 +1,6 @@
-import { IdState } from "./IdState";
+type IdState = {
+    id: number
+}
 
 type Amenitie = 
     | "AC" 
@@ -18,7 +20,6 @@ type RoomType =
     | "Double Superior"
     | "Suite";
 
-
 type RoomState = IdState & {
     roomNumber: string;
     description: string;
@@ -29,8 +30,8 @@ type RoomState = IdState & {
     discount: number;
     status: "Available" | "Booked";
 }
-/*
-type BookingState = IdObject & {
+
+type BookingState = IdState & {
     name: string;
     orderDate: string;
     checkInDate: string;
@@ -40,7 +41,7 @@ type BookingState = IdObject & {
     status: "Check In" | "Check Out" | "In Progress";
 }
 
-type ContactState = IdObject & {
+type ContactState = IdState & {
     name: string;
     date: string;
     email: string;
@@ -50,7 +51,7 @@ type ContactState = IdObject & {
     status: "Published" | "Archived"
 }
 
-type UserState = IdObject & {
+type UserState = IdState & {
     name: string;
     photo: string;
     email: string;
@@ -60,7 +61,6 @@ type UserState = IdObject & {
     description: string;
     status: "Active" | "Inactive";
     password: string;
-}*/
+}
 
-
-export { RoomState }
+export { RoomState, BookingState, ContactState, UserState, IdState }
