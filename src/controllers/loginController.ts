@@ -11,12 +11,8 @@ router.post('/', (req: Request, res: Response) => {
     const { email, password } = req.body;
     const user = users.find(user => user.email === email);
 
-    if (!user) {
-        return res.status(400).json({ error: "User not found" });
-    }
-
-    if (user.password !== password) {
-        return res.status(400).json({ error: "Invalid password" });
+    if (!user || user.password !== password) {
+        return res.status(400).json({ error: "Data invalid" });
     }
 
     const token = jwt.sign({ userId: user.id, email: user.email }, process.env.TOKEN_SECRET as string);
