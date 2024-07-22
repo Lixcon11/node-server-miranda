@@ -1,5 +1,9 @@
 type IdState = {
-    id: number
+    _id: number
+}
+
+type TSchema = {
+    _id: number;
 }
 
 type Amenitie = 
@@ -63,4 +67,4 @@ type UserState = IdState & {
     password: string;
 }
 
-export { RoomState, BookingState, ContactState, UserState, IdState }
+export { RoomState, BookingState, ContactState, UserState, IdState, TSchema }
