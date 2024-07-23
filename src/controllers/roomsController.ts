@@ -8,7 +8,7 @@ const roomsController = () => createController<RoomState>("rooms", roomsData as 
 export { roomsController }*/
 
 import { createController } from "../utils/createController"
-import { Room } from "../schemas/roomSchema"
+import { Room } from "../models/roomSchema"
 
 const roomsController = () => createController("rooms", Room);
 

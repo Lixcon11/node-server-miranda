@@ -1,5 +1,5 @@
 import { createController } from "../utils/createController"
-import { User } from "../schemas/userSchema";
+import { User } from "../models/userSchema";
 
 const usersController = () => createController("users", User)
 

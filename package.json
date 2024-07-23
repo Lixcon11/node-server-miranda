@@ -12,12 +12,13 @@
   },
   "scripts": {
     "start": "nodemon",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.8",
     "@babel/preset-typescript": "^7.24.7",
     "@faker-js/faker": "^8.4.1",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",

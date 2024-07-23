@@ -1,6 +1,7 @@
 import express, { Request, Response, Router } from "express";
 import { Data } from "../services/DataService";
 import { IdState } from "../types/DataState";
+import bcrypt from 'bcrypt';
 
 const singularize = (plural: string): string => {
     return plural.endsWith('s') ? plural.slice(0, -1) : plural;
@@ -17,6 +18,9 @@ const dataController = <T extends IdState>(service: Data<T>, name: string): Rout
 
     router.post("/", async (req: Request, res: Response) => {
         const input = req.body;
+        if(input.password) {
+            input.password = await bcrypt.hash(input.password, 10);
+        }
         const newItem = await service.create(input);
         return res.json({ [singularName]: newItem });
     });
