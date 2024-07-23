@@ -4,9 +4,9 @@ import loginController from "./controllers/loginController";
 import { authenticateToken } from "./middleware/auth";
 import publicController from "./controllers/publicController";
 import { roomsController } from "./controllers/roomsController";
-//import { bookingsController } from "./controllers/bookingsController";
-//import { usersController } from "./controllers/usersController";
-//import { contactsController } from "./controllers/contactsController";
+import { bookingsController } from "./controllers/bookingsController";
+import { usersController } from "./controllers/usersController";
+import { contactsController } from "./controllers/contactsController";
 import mongoose from 'mongoose';
 
 const app = express()
@@ -15,8 +15,7 @@ app.use(express.json())
 
 if (!process.env.MONGO_URI) {
     throw new Error('MONGO_URI environment variable is not defined');
-  }
-  
+}
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected'))
@@ -28,9 +27,9 @@ app.use("/info", publicController)
 app.use(authenticateToken);
 
 roomsController();
-//bookingsController();
-//usersController();
-//contactsController()
+bookingsController();
+usersController();
+contactsController()
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
     console.error(err);

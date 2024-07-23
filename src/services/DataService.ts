@@ -1,7 +1,7 @@
-import { Model, Document } from 'mongoose';
+import { Model } from 'mongoose';
 import { IdState } from "../types/DataState";
 
-class Data<T extends IdState & Document> {
+class Data<T extends IdState> {
     private model: Model<T>;
 
     constructor(model: Model<T>) {

@@ -1,7 +1,6 @@
 import { createController } from "../utils/createController"
-import { BookingState } from "../types/DataState";
-import bookingsData from "../data/bookingsData.json"
+import { Booking } from "../schemas/bookingSchema";
 
-const bookingsController = () => createController<BookingState>("bookings", bookingsData as BookingState[])
+const bookingsController = () => createController("bookings", Booking)
 
 export { bookingsController }

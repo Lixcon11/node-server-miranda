@@ -1,9 +1,7 @@
-import { Schema, model, connect } from 'mongoose';
-import { UserState, TSchema } from '../types/DataState';
+import { Schema, model } from 'mongoose';
+import { UserState } from '../types/DataState';
 
-type UserSchema = Omit<UserState, 'id'> & TSchema
-
-const userSchema = new Schema<UserSchema>({
+const userSchema = new Schema<UserState>({
     _id: {type: Number, required: true},
     name: { type: String, required: true },
     photo: { type: String, required: true },
@@ -19,30 +17,6 @@ const userSchema = new Schema<UserSchema>({
     versionKey: false
 });
 
-const User = model<UserSchema>('User', userSchema);
-
-
-//Example of using the model to save on database
-/*
-const run = async () => {
-    await connect('mongodb://127.0.0.1:27017/local');
-  
-    const user = new User({
-        _id: 500,
-        name: 'Bill',
-        photo: 'https://i.imgur.com/dM7Thhn.png',
-        email: 'bill@initech.com',
-        phone: "68454672",
-        date: "10/05/2024",
-        job: "Engineer",
-        description: "Fixes bathtubs",
-        status: "Available",
-        password: "password123"
-    });
-    await user.save();
-  }
-
-run().catch(err => console.log(err));
-*/
+const User = model('User', userSchema);
 
 export { User }

@@ -1,9 +1,7 @@
-import { Document, Schema, model } from 'mongoose';
+import { Schema, model } from 'mongoose';
 import { RoomState } from '../types/DataState';
 
-type RoomDocument = RoomState & Document
-
-const roomSchema = new Schema<RoomDocument>({
+const roomSchema = new Schema<RoomState>({
     _id: { type: Number, required: true },
     roomNumber: { type: String, required: true },
     description: { type: String, required: true },
@@ -13,9 +11,11 @@ const roomSchema = new Schema<RoomDocument>({
     price: { type: Number, required: true },
     discount: { type: Number, required: true },
     status: { type: String, required: true }
-}, {
+},
+{
     versionKey: false
 });
 
-const Room = model<RoomDocument>('Room', roomSchema);
-export { Room, RoomDocument }
+const Room = model('Room', roomSchema);
+
+export { Room }

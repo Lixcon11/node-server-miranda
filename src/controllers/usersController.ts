@@ -1,7 +1,6 @@
 import { createController } from "../utils/createController"
-import { UserState } from "../types/DataState";
-import usersData from "../data/usersData.json"
+import { User } from "../schemas/userSchema";
 
-const usersController = () => createController<UserState>("users", usersData as UserState[])
+const usersController = () => createController("users", User)
 
 export { usersController }

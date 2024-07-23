@@ -1,7 +1,6 @@
 import { createController } from "../utils/createController"
-import { ContactState } from "../types/DataState";
-import contactsData from "../data/contactsData.json"
+import { Contact } from "../schemas/contactSchema";
 
-const contactsController = () => createController<ContactState>("contacts", contactsData as ContactState[])
+const contactsController = () => createController("contacts", Contact)
 
 export { contactsController }

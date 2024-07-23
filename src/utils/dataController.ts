@@ -1,13 +1,12 @@
 import express, { Request, Response, Router } from "express";
 import { Data } from "../services/DataService";
 import { IdState } from "../types/DataState";
-import { Document } from "mongoose";
 
 const singularize = (plural: string): string => {
     return plural.endsWith('s') ? plural.slice(0, -1) : plural;
 };
 
-const dataController = <T extends IdState & Document>(service: Data<T>, name: string): Router => {
+const dataController = <T extends IdState>(service: Data<T>, name: string): Router => {
     const router = express.Router();
     const singularName = singularize(name);
 
