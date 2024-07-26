@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const singularize = (plural) => {
     return plural.endsWith('s') ? plural.slice(0, -1) : plural;
 };
@@ -27,7 +27,7 @@ const dataController = (service, name) => {
     router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const input = req.body;
         if (input.password) {
-            input.password = yield bcrypt_1.default.hash(input.password, 10);
+            input.password = yield bcryptjs_1.default.hash(input.password, 10);
         }
         const newItem = yield service.create(input);
         return res.json({ [singularName]: newItem });

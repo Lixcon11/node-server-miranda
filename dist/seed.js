@@ -19,7 +19,7 @@ const userSchema_1 = require("./models/userSchema");
 const roomSchema_1 = require("./models/roomSchema");
 const bookingSchema_1 = require("./models/bookingSchema");
 const contactSchema_1 = require("./models/contactSchema");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const seed = () => __awaiter(void 0, void 0, void 0, function* () {
     if (!process.env.MONGO_URI) {
         throw new Error('MONGO_URI environment variable is not defined');
@@ -38,7 +38,7 @@ const seed = () => __awaiter(void 0, void 0, void 0, function* () {
             job: faker_1.faker.person.jobTitle(),
             description: faker_1.faker.lorem.sentence(),
             status: faker_1.faker.helpers.arrayElement(["Active", "Inactive"]),
-            password: yield bcrypt_1.default.hash(faker_1.faker.internet.password(), 10)
+            password: yield bcryptjs_1.default.hash(faker_1.faker.internet.password(), 10)
         });
         user.save();
         const room = new roomSchema_1.Room({

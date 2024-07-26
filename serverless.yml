@@ -9,8 +9,8 @@ provider:
   name: aws
   region: eu-north-1
   environment:
-    TOKEN_SECRET: ${file(.env.json):TOKEN_SECRET}
-    MONGO_URL: ${file(.env.json):MONGO_URL}
+    TOKEN_SECRET: ${env:TOKEN_SECRET}
+    MONGO_URI: ${env:MONGO_URI}
   runtime: nodejs20.x
 functions:
   app:

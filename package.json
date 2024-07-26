@@ -2,7 +2,7 @@
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.10",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "crypto-js": "^4.2.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
@@ -21,6 +21,7 @@
     "@babel/preset-typescript": "^7.24.7",
     "@faker-js/faker": "^8.4.1",
     "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",

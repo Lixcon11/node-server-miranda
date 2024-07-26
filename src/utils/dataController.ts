@@ -1,7 +1,7 @@
 import express, { Request, Response, Router } from "express";
 import { Data } from "../services/DataService";
 import { IdState } from "../types/DataState";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 const singularize = (plural: string): string => {
     return plural.endsWith('s') ? plural.slice(0, -1) : plural;

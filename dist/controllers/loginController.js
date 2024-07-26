@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const userSchema_1 = require("../models/userSchema");
 const router = express_1.default.Router();
 router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -23,7 +23,7 @@ router.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (!user) {
         return res.status(400).json({ error: "Data invalid" });
     }
-    const isMatch = yield bcrypt_1.default.compare(password, user.password);
+    const isMatch = yield bcryptjs_1.default.compare(password, user.password);
     if (!isMatch) {
         return res.status(400).json({ error: "Data invalid" });
     }

@@ -5,7 +5,7 @@ import { User } from './models/userSchema';
 import { Room } from './models/roomSchema';
 import { Booking } from './models/bookingSchema';
 import { Contact } from './models/contactSchema';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 const seed = async () => {
     
