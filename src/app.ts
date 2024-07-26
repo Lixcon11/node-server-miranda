@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err => console.error('MongoDB connection error:', err));
 
 app.use("/login", loginController);
-app.use("/info", publicController)
+app.use("/", publicController)
 
 app.use(authenticateToken);
 
