@@ -1,0 +1,88 @@
+{
+  "D:\\descargas\\rol\\Oxygen\\hotrl\\proyecto\\ditintos apartados\\node-server-miranda": {
+    "versionSfCore": null,
+    "versionFramework": "4.1.16",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeServiceName": null,
+    "servicePath": "D:\\descargas\\rol\\Oxygen\\hotrl\\proyecto\\ditintos apartados\\node-server-miranda",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "miranda-backend",
+      "package": {
+        "patterns": [
+          "!./**",
+          "package.json",
+          "node_modules/**",
+          "dist/**"
+        ]
+      },
+      "provider": {
+        "name": "aws",
+        "region": "eu-north-1",
+        "environment": {
+          "TOKEN_SECRET": "<REDACTED>",
+          "MONGO_URL": "${file(.env.json):MONGO_URL}"
+        },
+        "runtime": "nodejs20.x"
+      },
+      "functions": {
+        "app": {
+          "handler": "dist/lambda.handler",
+          "events": [
+            {
+              "http": {
+                "path": "/",
+                "method": "ANY",
+                "cors": true
+              }
+            },
+            {
+              "http": {
+                "path": "/{proxy+}",
+                "method": "ANY",
+                "cors": "true (editado)"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "serviceRawFile": "service: miranda-backend\r\npackage:\r\n  patterns:\r\n    - \"!./**\"\r\n    - \"package.json\"\r\n    - \"node_modules/**\"\r\n    - \"dist/**\"\r\nprovider:\r\n  name: aws\r\n  region: eu-north-1\r\n  environment:\r\n    TOKEN_SECRET: ${file(.env.json):TOKEN_SECRET}\r\n    MONGO_URL: ${file(.env.json):MONGO_URL}\r\n  runtime: nodejs20.x\r\nfunctions:\r\n  app:\r\n    handler: dist/lambda.handler\r\n    events:\r\n      - http:\r\n          path: /\r\n          method: ANY\r\n          cors: true\r\n      - http:\r\n          path: /{proxy+}\r\n          method: ANY\r\n          cors: true (editado) ",
+    "command": [
+      "deploy"
+    ],
+    "options": {},
+    "error": {
+      "message": "Cannot resolve '${file(.env.json):TOKEN_SECRET}' variable at 'provider.environment.TOKEN_SECRET'. None of the variables returned a value and no default value was provided. Please check your variable definitions or provide a default value.",
+      "stack": "Error: Cannot resolve '${file(.env.json):TOKEN_SECRET}' variable at 'provider.environment.TOKEN_SECRET'. None of the variables returned a value and no default value was provided. Please check your variable definitions or provide a default value.\n    at _ResolverManager.resolve (file:///C:/Users/luis/.serverless/releases/4.1.16/package/dist/sf-core.js:917:48312)\n    at async #handlePlaceholderNode (file:///C:/Users/luis/.serverless/releases/4.1.16/package/dist/sf-core.js:917:46924)\n    at async file:///C:/Users/luis/.serverless/releases/4.1.16/package/dist/sf-core.js:917:45059\n    at async processNodeAndHandleCompletion (file:///C:/Users/luis/.serverless/releases/4.1.16/package/dist/sf-core.js:917:38811)",
+      "code": "MISSING_VARIABLE_RESULT"
+    },
+    "machineId": "496114f6cb3515973f73a0a46d1537dd",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "20c818f1-70a9-4496-841b-04bebda24044",
+    "orgName": "lixcon",
+    "userId": "LVKYyjpkmjtzx9g49s",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": true,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "lixcon",
+    "subscription": null,
+    "userEmail": "luisfelipecorino2@gmail.com",
+    "serviceProviderAwsCredentials": "<REDACTED>",
+    "serviceProviderAwsAccountId": "058264089912",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
