@@ -8,8 +8,11 @@ import { bookingsController } from "./controllers/bookingsController";
 import { usersController } from "./controllers/usersController";
 import { contactsController } from "./controllers/contactsController";
 import mongoose from 'mongoose';
+import cors from "cors"
 
 const app = express()
+
+app.use(cors())
 
 app.use(express.json())
 
