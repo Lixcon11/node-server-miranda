@@ -1,5 +1,5 @@
 type IdState = {
-    id: number
+    _id: number
 }
 
 type Amenitie = 
