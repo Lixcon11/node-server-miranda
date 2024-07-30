@@ -1,7 +1,7 @@
 import { Model } from 'mongoose';
-import { IdState } from "../types/DataState";
+import { DataState } from "../types/DataState";
 
-class Data<T extends IdState> {
+class Data<T extends DataState> {
     private model: Model<T>;
 
     constructor(model: Model<T>) {
@@ -12,33 +12,21 @@ class Data<T extends IdState> {
         return this.model.find().exec();
     }
 
-    async getById(id: number): Promise<T | null> {
+    async getById(id: string): Promise<T | null> {
         return this.model.findById(id).exec();
     }
-
-    async create(item: Omit<T, '_id'>): Promise<T> {
-        const newId = await this.generateNewId();
-        const newItem = new this.model({ ...item, _id: newId });
-        return newItem.save();
+    async create(item: T): Promise<T> {
+        const newItem = new this.model(item);
+        const savedItem = await newItem.save();
+        return savedItem.toObject() as T;
     }
 
-    async update(item: Partial<T> & { _id: number }): Promise<T | null> {
+    async update(item: Partial<T> & { _id: string }): Promise<T | null> {
         return this.model.findByIdAndUpdate(item._id, item, { new: true }).exec();
     }
 
-    async delete(id: number): Promise<void> {
+    async delete(id: string): Promise<void> {
         await this.model.findByIdAndDelete(id).exec();
-    }
-
-    private async generateNewId(): Promise<number> {
-        const usedIds = await this.model.find({}, '_id').exec();
-        const usedIdSet = new Set(usedIds.map(doc => doc._id));
-    
-        let newId = 1;
-        while (usedIdSet.has(newId)) {
-            newId++;
-        }
-        return newId;
     }
 }
 

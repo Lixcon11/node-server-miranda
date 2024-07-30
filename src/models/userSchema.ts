@@ -2,7 +2,6 @@ import { Schema, model } from 'mongoose';
 import { UserState } from '../types/DataState';
 
 const userSchema = new Schema<UserState>({
-    _id: {type: Number, required: true},
     name: { type: String, required: true },
     photo: { type: String, required: true },
     email: { type: String, required: true },

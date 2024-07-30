@@ -1,6 +1,6 @@
-type IdState = {
+/*type IdState = {
     _id: number
-}
+}*/
 
 type Amenitie = 
     | "AC" 
@@ -20,7 +20,7 @@ type RoomType =
     | "Double Superior"
     | "Suite";
 
-type RoomState = IdState & {
+type RoomState =  {
     roomNumber: string;
     description: string;
     photos: string[];
@@ -31,7 +31,7 @@ type RoomState = IdState & {
     status: "Available" | "Booked";
 }
 
-type BookingState = IdState & {
+type BookingState =  {
     name: string;
     orderDate: string;
     checkInDate: string;
@@ -41,7 +41,7 @@ type BookingState = IdState & {
     status: "Check In" | "Check Out" | "In Progress";
 }
 
-type ContactState = IdState & {
+type ContactState =  {
     name: string;
     date: string;
     email: string;
@@ -51,7 +51,7 @@ type ContactState = IdState & {
     status: "Published" | "Archived"
 }
 
-type UserState = IdState & {
+type UserState = {
     name: string;
     photo: string;
     email: string;
@@ -63,4 +63,6 @@ type UserState = IdState & {
     password: string;
 }
 
-export { RoomState, BookingState, ContactState, UserState, IdState }
+type DataState = UserState | ContactState | BookingState | RoomState
+
+export { RoomState, BookingState, ContactState, UserState, DataState }

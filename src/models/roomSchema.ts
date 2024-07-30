@@ -2,7 +2,6 @@ import { Schema, model } from 'mongoose';
 import { RoomState } from '../types/DataState';
 
 const roomSchema = new Schema<RoomState>({
-    _id: { type: Number, required: true },
     roomNumber: { type: String, required: true },
     description: { type: String, required: true },
     photos: { type: [String], required: true },

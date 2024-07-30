@@ -1,13 +1,13 @@
 import express, { Request, Response, Router } from "express";
 import { Data } from "../services/DataService";
-import { IdState } from "../types/DataState";
+import { DataState } from "../types/DataState";
 import bcrypt from 'bcryptjs';
 
 const singularize = (plural: string): string => {
     return plural.endsWith('s') ? plural.slice(0, -1) : plural;
 };
 
-const dataController = <T extends IdState>(service: Data<T>, name: string): Router => {
+const dataController = <T extends DataState>(service: Data<T>, name: string): Router => {
     const router = express.Router();
     const singularName = singularize(name);
 
@@ -26,20 +26,20 @@ const dataController = <T extends IdState>(service: Data<T>, name: string): Rout
     });
 
     router.get("/:id", async (req: Request, res: Response) => {
-        const id = parseInt(req.params.id);
+        const id = req.params.id;
         const item = await service.getById(id);
         return res.json({ [singularName]: item });
     });
 
     router.patch("/:id", async (req: Request, res: Response) => {
-        const id = parseInt(req.params.id);
+        const id = req.params.id;
         const input = { ...req.body, _id: id };
         const updatedItem = await service.update(input);
         return res.json({ [singularName]: updatedItem });
     });
 
     router.delete("/:id", async (req: Request, res: Response) => {
-        const id = parseInt(req.params.id); 
+        const id = req.params.id; 
         await service.delete(id);
         return res.json({ success: true });
     });

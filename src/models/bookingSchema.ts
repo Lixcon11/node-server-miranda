@@ -2,7 +2,6 @@ import { Schema, model } from 'mongoose';
 import { BookingState } from '../types/DataState';
 
 const contactSchema = new Schema<BookingState>({
-    _id: { type: Number, required: true },
     name: { type: String, required: true },
     orderDate: { type: String, required: true },
     checkInDate: { type: String, required: true },

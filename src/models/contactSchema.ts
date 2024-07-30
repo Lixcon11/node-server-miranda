@@ -2,7 +2,6 @@ import { Schema, model } from 'mongoose';
 import { ContactState } from '../types/DataState';
 
 const contactSchema = new Schema<ContactState>({
-    _id: { type: Number, required: true },
     name: { type: String, required: true },
     date: { type: String, required: true },
     email: { type: String, required: true },
