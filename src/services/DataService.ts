@@ -1,5 +1,6 @@
 import { Model } from 'mongoose';
-import { DataState } from "../types/DataState";
+import { DataState, UserState } from "../types/DataState";
+import bcrypt from 'bcryptjs';
 
 class Data<T extends DataState> {
     private model: Model<T>;
@@ -16,6 +17,9 @@ class Data<T extends DataState> {
         return this.model.findById(id).exec();
     }
     async create(item: T): Promise<T> {
+        if (this.isUserState(item)) {
+            item.password = await bcrypt.hash(item.password, 10);
+        }
         const newItem = new this.model(item);
         const savedItem = await newItem.save();
         return savedItem.toObject() as T;
@@ -27,6 +31,20 @@ class Data<T extends DataState> {
 
     async delete(id: string): Promise<void> {
         await this.model.findByIdAndDelete(id).exec();
+    }
+
+    private isUserState = (item: any): item is UserState => {
+        return (
+            typeof item.name === 'string' &&
+            typeof item.photo === 'string' &&
+            typeof item.email === 'string' &&
+            typeof item.phone === 'string' &&
+            typeof item.date === 'string' &&
+            typeof item.job === 'string' &&
+            typeof item.description === 'string' &&
+            typeof item.status === 'string' &&
+            typeof item.password === 'string'
+        );
     }
 }
 
