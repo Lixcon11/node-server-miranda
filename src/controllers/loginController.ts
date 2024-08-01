@@ -17,7 +17,7 @@ router.post('/', async (req: Request, res: Response) => {
     }
     
     const token = jwt.sign({ userId: user.id, email: user.email }, process.env.TOKEN_SECRET as string);
-    return res.json({ token });
+    return res.json({ token, id: user._id, email: user.email, name: user.name, photo: user.photo });
 });
 
 export default router;

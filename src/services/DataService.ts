@@ -29,8 +29,9 @@ class Data<T extends DataState> {
         return this.model.findByIdAndUpdate(item._id, item, { new: true }).exec();
     }
 
-    async delete(id: string): Promise<void> {
+    async delete(id: string): Promise<string> {
         await this.model.findByIdAndDelete(id).exec();
+        return id;
     }
 
     private isUserState = (item: any): item is UserState => {

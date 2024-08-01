@@ -36,8 +36,8 @@ const dataController = <T extends DataState>(service: Data<T>, name: string): Ro
 
     router.delete("/:id", async (req: Request, res: Response) => {
         const id = req.params.id; 
-        await service.delete(id);
-        return res.json({ success: true });
+        const idDeleted = await service.delete(id);
+        return res.json({ success: true, id: idDeleted });
     });
 
     return router;
