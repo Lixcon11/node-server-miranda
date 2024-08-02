@@ -6,7 +6,7 @@ import { Data } from "../services/DataService";
 
 const createController = <T extends DataState>(name: string, model: Model<T>) => {
     const service = new Data(model);
-    app.use(`/${name}`, dataController(service, name));
+    app.use(`/${name}`, dataController(service));
 };
 
 export { createController };
