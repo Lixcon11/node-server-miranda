@@ -17,6 +17,7 @@ class Data<T extends DataState> {
         return this.model.findById(id).exec();
     }
     async create(item: T): Promise<T> {
+        console.log(item)
         if (this.isUserState(item)) {
             item.password = await bcrypt.hash(item.password, 10);
         }
